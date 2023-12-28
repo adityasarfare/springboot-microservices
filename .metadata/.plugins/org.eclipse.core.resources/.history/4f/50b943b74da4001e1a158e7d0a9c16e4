@@ -1,0 +1,20 @@
+spring.application.name= discovery-server
+server.port=8761
+
+eureka.instance.hostname=localhost
+
+eureka.client.fetch-registry=false
+eureka.client.register-with-eureka=false
+
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka
+
+
+#logging.level.org.springframework.security=DEBUG
+#eureka.username=eureka
+#eureka.password=password
+
+spring.security.user.name=eureka
+spring.security.user.password=password
+
+#spring.zipkin.base-url=http://localhost:9411
+#spring.sleuth.sampler.probability=1.0
