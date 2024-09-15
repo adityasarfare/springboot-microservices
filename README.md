@@ -1,0 +1,1 @@
+This is a fully functional eCommerce backend website that is based on microservices build using SpringBoot, Service Discovery, API Gateway, Security Using KEYCLOAK, REsilience 4J Circuit breaker, Distributed tracing using zipkin.
