@@ -15,6 +15,7 @@ import com.javaguides.orderservice.config.WebClientConfig;
 import com.javaguides.orderservice.dto.InventoryResponse;
 import com.javaguides.orderservice.dto.OrderLineItemsDto;
 import com.javaguides.orderservice.dto.OrderRequest;
+import com.javaguides.orderservice.event.OrderPlacedEvent;
 import com.javaguides.orderservice.model.Order;
 import com.javaguides.orderservice.model.OrderLineItems;
 import com.javaguides.orderservice.repository.OrderRepository;
@@ -59,9 +60,11 @@ public class OrderService {
 		.block();
 		
 		boolean allProductsInStock = Arrays.stream(inventoryResponseArray).allMatch(inventoryResponse-> inventoryResponse.isInStock());
+		System.out.println(allProductsInStock);
 		if ( allProductsInStock) {
-			kafkaTemplate.send("notificationTopic", new OrderPlacedEvent(order.getOrderNumber()));
+			System.out.println(order.getOrderNumber());	
 		orderRepository.save(order);
+		kafkaTemplate.send("notificationTopic", new OrderPlacedEvent(order.getOrderNumber()));
 		return "Order place sucessfully";
 	}
 		else {

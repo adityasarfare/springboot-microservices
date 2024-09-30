@@ -9,6 +9,7 @@ public class InventoryResponse {
 
 	private String skuCode;
 	private boolean  isInStock;
+	
 	public InventoryResponse() {
 		super();
 		// TODO Auto-generated constructor stub

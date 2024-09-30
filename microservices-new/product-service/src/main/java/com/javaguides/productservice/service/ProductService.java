@@ -28,6 +28,7 @@ public class ProductService {
         product.setDescription(productRequest.getDescription());
         product.setName(productRequest.getName());
         product.setPrice(productRequest.getPrice());
+        product.setSkuCode(productRequest.getSkuCode());
         // Further logic to save the product or perform additional operations.
         
         productRepository.save(product);
@@ -47,6 +48,7 @@ public class ProductService {
 	 productResponse.setId(product.getId());
 	 productResponse.setName(product.getName());
 	 productResponse.setPrice(product.getPrice());
+	 productResponse.setSkuCode(product.getSkuCode());
 	 return productResponse;
  }
 }

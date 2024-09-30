@@ -1,5 +1,7 @@
 package com.javaguides.com.discoveryserver.config;
 
+import java.beans.Customizer;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,21 +35,29 @@ public class SecurityConfig {
 
 	
 	public void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.csrf().disable()
-		.authorizeRequests().anyRequest()
-		.authenticated()
-		.and()
-		.httpBasic();
+//		httpSecurity.csrf().disable()
+//		.authorizeRequests().anyRequest()
+//		.authenticated()
+//		.and()
+//		.httpBasic();
+		
+		httpSecurity
+        .csrf(csrf -> csrf.disable())  // Disable CSRF
+        .authorizeHttpRequests(authorize -> authorize
+            .anyRequest().authenticated()  // All requests need to be authenticated
+        ).httpBasic(httpBasic -> {});  //
 	}
 	
 	@Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.csrf().disable()
-		.authorizeRequests().anyRequest()
-		.authenticated()
-		.and()
-		.httpBasic();
-		return httpSecurity.build();
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http
+        .csrf(csrf -> csrf.disable())  // Disable CSRF protection
+        .authorizeHttpRequests(authorize -> authorize
+            .anyRequest().authenticated()  // Require authentication for all requests
+        )
+        .httpBasic(httpBasic -> {});  // Enable basic authentication
+
+    return http.build();
 
     }
 }

@@ -76,9 +76,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
             
     
-    <spring-cloud.version>2020.0.5</spring-cloud.version>
+    <!--<spring-cloud.version>2020.0.5</spring-cloud.version>-->
           
-  
+  <spring-cloud.version>2023.0.0</spring-cloud.version>
+
   
   </properties>
           

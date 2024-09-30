@@ -1,4 +1,4 @@
-package com.javaguides.orderservice.service;
+package com.javaguides.orderservice.event;
 
 public class OrderPlacedEvent {
 

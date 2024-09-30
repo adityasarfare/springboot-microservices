@@ -1,5 +1,6 @@
 package com.javaguides.productservice;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.math.BigDecimal;
@@ -20,6 +21,7 @@ import org.testcontainers.utility.DockerImageName;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javaguides.productservice.dto.ProductRequest;
+import com.javaguides.productservice.repository.ProductRepository;
 
 @SpringBootTest
 @Testcontainers
@@ -34,6 +36,9 @@ class ProductServiceApplicationTests {
 	
 	@Autowired
 	private ObjectMapper objectMapper;
+	
+	@Autowired
+	ProductRepository productRepository;
 	
 	@DynamicPropertySource
 	static void setProperties(DynamicPropertyRegistry dynamicPropertyRegistry) {
@@ -51,7 +56,7 @@ class ProductServiceApplicationTests {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(productRequestString))
 		.andExpect(status().isCreated());
-			
+			assertEquals(1, productRepository.findAll().size());
 	}
 
 	private ProductRequest getProductRequest() {

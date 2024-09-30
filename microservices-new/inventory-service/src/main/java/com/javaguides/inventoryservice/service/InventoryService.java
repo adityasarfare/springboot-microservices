@@ -28,21 +28,27 @@ public class InventoryService {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Transactional(readOnly = true)
-	public List<InventoryResponse> isInStock(List<String> skuCode) {
-		logger.info("Wait Started");
-//		try {
-//		Thread.sleep(10000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		logger.info("Wait Ended ");
-		
-		
-		return inventoryRepository.findBySkuCodeIn(skuCode)
-				.stream()
-				.map(this::inventoryCheck).toList();
-		
+ 	public List<InventoryResponse> isInStock(List<String> skuCode) {
+     logger.info("Checking stock for SKUs: {}", skuCode);
+        
+        // Fetch inventories by SKU codes
+        List<Inventory> inventories = inventoryRepository.findBySkuCodeIn(skuCode);
+        logger.info("Found Inventories: {}", inventories);
+
+        // Map SKU codes to inventory responses
+        return skuCode.stream()
+            .map(sku -> {
+                Inventory inventory = inventories.stream()
+                    .filter(inv -> inv.getSkuCode().equals(sku))
+                    .findFirst()
+                    .orElse(null);
+
+                InventoryResponse response = new InventoryResponse();
+                response.setSkuCode(sku);
+                response.setInStock(inventory != null && inventory.getQuantity() > 0);
+                return response;
+            })
+            .toList();
 	}
 
 	private InventoryResponse inventoryCheck(Inventory inventory) {

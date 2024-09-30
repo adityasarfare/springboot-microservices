@@ -23,7 +23,7 @@ public class InventoryController  {
 	
 	
 	//http://localhost:8083/api/inventory/iphone_14,iphone-14_red --> Path Variable
-	//http://localhost:8083/api/inventory?skucode=iphone_14&skucode=iphone-14_red 
+	//http://localhost:8083/api/inventory?skuCode=iphone_14&skuCode=iphone-14_red 
 //	@GetMapping("/{sku-code}")
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)

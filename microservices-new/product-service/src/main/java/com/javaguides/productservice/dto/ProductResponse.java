@@ -11,18 +11,22 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class ProductResponse {
 
 	@Id
 	private String id;
+	private String skuCode;
 	private String name;
 	private String description;
 	private BigDecimal price;
-	public ProductResponse(String id, String name, String description, BigDecimal price) {
+
+	
+	public ProductResponse(String id, String skuCode, String name, String description, BigDecimal price) {
 		super();
 		this.id = id;
+		this.skuCode = skuCode;
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -36,6 +40,15 @@ public class ProductResponse {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public String getSkuCode() {
+		return skuCode;
+	}
+
+	public void setSkuCode(String skuCode) {
+		this.skuCode = skuCode;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -54,11 +67,16 @@ public class ProductResponse {
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
+
 	@Override
 	public String toString() {
-		return "ProductResponse [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ "]";
+		return "Product [id=" + id + ", skuCode=" + skuCode + ", name=" + name + ", description=" + description
+				+ ", price=" + price + "]";
 	}
+	
+	
+	
+	
 	
 	
 }
