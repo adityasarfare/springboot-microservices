@@ -1,7 +1,8 @@
-🛒 eCommerce Full Stack Application - Microservices Architecture (Spring Boot, MySQL, MongoDB, Angular)
-This is a full-stack eCommerce application built using microservices architecture, with the backend developed in Spring Boot, MySQL, and MongoDB for database storage, and the frontend in Angular. The system also incorporates Kafka for event-driven communication, Keycloak for authentication and authorization, Resilience4J for circuit breakers and fault tolerance, and Docker for containerized services.
+#🛒 eCommerce Full Stack Application - Microservices Architecture (Spring Boot, MySQL, MongoDB, Angular)
 
-🗂️ Table of Contents
+##This is a full-stack eCommerce application built using microservices architecture, with the backend developed in Spring Boot, MySQL, and MongoDB for database storage, and the frontend in Angular. The system also incorporates Kafka for event-driven communication, Keycloak for authentication and authorization, Resilience4J for circuit breakers and fault tolerance, and Docker for containerized services.
+
+#🗂️ Table of Contents
 Tech Stack
 Core Features
 Microservices Architecture
